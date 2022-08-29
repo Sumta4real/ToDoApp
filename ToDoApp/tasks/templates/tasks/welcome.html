@@ -1,0 +1,17 @@
+{% extends 'tasks/index.html' %}
+
+{% block body%}
+<form action="" class="search">
+<p> Hey User! What is your username</p>
+<input type="text" name="username">
+<input type="submit"  value="That's it">
+
+<h1> Welcome {{username}}</h1>
+<ul>
+{% for detail in details %}
+<li> {{detail}} </li>
+{% endfor %}
+</ul>
+</form>
+
+{% endblock %}

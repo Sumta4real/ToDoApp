@@ -1,0 +1,33 @@
+{% extends 'tasks/index.html' %}
+
+{% block title %}
+Task View
+{% endblock %}
+
+{% block body%}
+
+{{form.as_p}}
+
+<h2> Welcome Dear</h2>
+<form action="" method="POST"> {% csrf_token %}
+    <input type="text" placeholder="Title" name="title"> <br> <br>
+    <textarea name="content" id="content" cols="30" rows="10" placeholder="List your Tasks" ></textarea> <br><br>
+    <input type="date" name="target_date" id="target_date" placeholder="target_date"> <br> <br>
+    <input type="time" name="target_time" id="target_time" placeholder="target_time"> <br> <br>
+    <input type="submit" value="Add Tasks">
+</form>
+<ul>
+    {% for user in all_users %}
+        {% if user.username != 'username' %}
+        <li> {{ user.firstname }}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+<h2> List of all Tasks</h2>
+<ul>
+    {% for str(task) in all_tasks %}
+        <li> {{ task }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

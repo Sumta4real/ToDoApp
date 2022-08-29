@@ -1,0 +1,29 @@
+{%extends "tasks/index.html"%}
+
+{% block title %}
+Login Page
+{% endblock %}
+
+{% block body %}
+
+{% if not request.user.is_authenticated %}
+<div class="login">
+<form action="" class="center" method="POST"> {% csrf_token %}
+    {% if error %}
+    <p style="color: purple;"> {{error}} </p>
+    {% endif%}
+    <label for="" style="font-size: 25px;">Input your details to Login</label> <br><br>
+    <label for="username"> Username:</label> <br>
+    <input type="text" name="username" id="username"> <br>
+    <label for="password">Password:</label> <br>
+    <input type="password" name="password" id="password"> <br> <br>
+    <input type="submit" name="login" value="Login"> <br>
+
+    <p> Need an Account? Please <a href="register"> Register </a></p>
+</form>
+
+{% else %}
+<p> You are already logged in. Would you like to <a href="logout"> logout </a></p>
+</div>
+{% endif %}
+{% endblock %}

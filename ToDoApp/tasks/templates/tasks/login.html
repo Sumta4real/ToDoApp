@@ -1,0 +1,22 @@
+{%extends "tasks/index.html"%}
+
+{% block title %}
+Login Page
+{% endblock %}
+
+{% block body %}
+
+{% if not request.user.is_authenticated %}
+<div class="login">
+<form action="" class="center" method="POST"> {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" name="login" value="Login"> <br>
+
+    <p> Need an Account? Please <a href="register"> Register </a></p>
+</form>
+
+{% else %}
+<p> You are already logged in. Would you like to <a href="logout"> logout </a></p>
+</div>
+{% endif %}
+{% endblock %}

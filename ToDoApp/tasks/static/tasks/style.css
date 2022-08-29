@@ -1,0 +1,124 @@
+/* Top Navigation Styling */
+.topnav {
+    background-color: black;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Links in Top Navigation Styling */
+.topnav a{
+    color: white;
+    text-align: center;
+    padding: 14px;
+    float: left;
+    text-decoration: none;
+    
+}
+
+/* Position some links on the  navigation bar to the right */
+.topnav-right a {
+    float: right;
+    
+}
+
+/* unvisited link
+.topnav a:link{
+    color: white;
+}
+
+ visited link 
+.topnav a:visited {
+    background-color: honeydew;
+    color: darkgoldenrod;
+}*/
+
+/* Mouse hover link */
+
+.topnav a:hover {
+    background-color: brown;
+    color: black;
+}
+
+/* selected link */
+.topnav a:active {
+    background-color: honeydew;
+    color: darkgoldenrod;
+}
+
+/* */
+.landingimg {
+    float: left;
+    width: 50%;
+    background-image: url(image1.jpg);
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+
+/* Align content center vertically and horizontally */
+ .center{
+    text-align: center;
+    margin-top: 23%;
+    margin-bottom: 25%;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: red;
+}
+
+.home{
+    color: blue;
+}
+
+.homecontent{
+    text-align: center;
+    margin-top: 15%;
+    margin-right: 5%;
+    color: red;
+
+}
+
+.homecontent p,.homecontent a{
+    font-size: 20px;
+    text-decoration: none;
+}
+/* Style forms */
+.register, .login{
+    float: right;
+    width: 50%;
+    height: 100%;
+    background-color:rgb(229, 215, 197);
+
+}
+
+/* Style input boxes within form*/
+input {
+    color: black;
+    border: 2px solid brown;
+    border-radius: 4px;
+}
+
+.search {
+    margin-top: 40px;
+    text-align: center;
+}
+
+
+/* Position content to the top right of a right-aligned div*/
+.topright {
+    position: absolute;
+    top: 20px;
+    right: 14px;
+    font-size: 18px;
+  }
+
+  /* Position content to the bottom left of a right-aligned div*/
+ .bottomleft{
+    position: absolute;
+    bottom: 0px;
+    font-size: 18px;
+    left:50%
+
+}
+
+

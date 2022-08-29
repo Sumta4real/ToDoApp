@@ -1,0 +1,33 @@
+{%extends "tasks/index.html"%}
+<!--{% load static %}-->
+{% block title %}
+Home Page
+{% endblock %}
+<!--
+{% block extra_head%}
+<link rel="stylesheet" href="{% static 'tasks/style.css' %}">
+{% endblock %}
+-->
+
+{% block body %}
+<div class="home">
+   
+    <pre>
+    <p class="topright">
+     "If you set your goals ridiculously high 
+     and it's a failure,
+    you will fail above everyone else"</p>
+    </pre>
+    <div class="homecontent">
+        <h2> Thanks for stopping by </h2>
+            <p>Get your tasks done efficiently<a href="register"> Register Here</a></p>
+            <p> Already have an account? <a href="login"> Login </a></p>
+    </div>
+    <pre>
+    <p class="bottomleft"> "If you are not willing to risk the usual, 
+        you will have to settle for the ordinary"</p>
+    </pre>
+    
+</div>
+
+{% endblock %}

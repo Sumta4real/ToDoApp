@@ -1,0 +1,27 @@
+{%extends "tasks/index.html"%}
+
+{% block title %}
+Register Page
+{% endblock %}
+
+{% block body %}
+
+<div class="register">
+    <!--If a user is not already authenticated-->
+    {% if not request.user.is_authenticated %}
+    <form action="" method="POST" class="center">
+        {% csrf_token %}
+       {{ form.as_p }}
+        <input type="submit", name="register", value="Register">
+        <p> Already have an account? <a href="login"> Login </a></p>
+    </form>
+    
+</div>
+    {% else %}
+
+    <p> You are alredy logged in and cannot register. Would you like to <a href="logout">Logout</a></p>
+    
+    {% endif %}
+</div>
+
+{% endblock %}

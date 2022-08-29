@@ -1,0 +1,18 @@
+{% extends 'tasks/index.html' %}
+
+{% block title %}
+Task View
+{% endblock %}
+
+{% block body%}
+
+
+
+<h2> Welcome Dear</h2>
+<form action="" method="POST"> {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Add Tasks">
+</form>
+
+
+{% endblock %}
