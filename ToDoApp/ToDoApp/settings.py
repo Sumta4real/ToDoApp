@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-DJANGO_SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY","django-insecure-oovcx^3(9fe-v6r8fa^!62&0bh^rw&_q*j7pt1)hf3@dupa+-^")
+DJANGO_SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 print(DJANGO_SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -87,11 +87,11 @@ DATABASES = {
 }
 
 
-POSTGRES_DB = os.environ.get("POSTGRES_DB")
-POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
-POSTGRES_USER = os.environ.get("POSTGRES_USER")
-POSTGRES_HOST = os.environ.get("POSTGRES_HOST")
-POSTGRES_PORT = os.environ.get("POSTGRES_PORT")
+POSTGRES_DB = os.environ.get("POSTGRES_DB") #database name
+POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD") # postgres user password
+POSTGRES_USER = os.environ.get("POSTGRES_USER") # postgres username
+POSTGRES_HOST = os.environ.get("POSTGRES_HOST") # database host
+POSTGRES_PORT = os.environ.get("POSTGRES_PORT") # database port
 
 POSTGRES_READY = (
     POSTGRES_DB is not None
