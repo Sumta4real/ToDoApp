@@ -1,0 +1,44 @@
+{% extends 'tasks/index.html' %}
+
+{% block body %}
+
+
+{% for msg in messages%}
+<div class="message">
+{{ msg}}
+</div>
+{% endfor %}
+
+
+<table>
+    <thead>
+        <tr>
+            <td> Task</td>
+            <td> Title </td>
+            <td> Details </td>
+            <td> Target Date </td>
+            <td> Target Time </td>
+            <td> Status </td>
+            <td> Action </td>
+        </tr>
+    </thead>
+    <tbody>
+         {% for task in tasks %}
+        <tr>
+            <td> {{task.id}}</td>
+            <td> {{task.title}} </td>
+            <td> {{task.content}} </td>
+            <td> {{task.target_date}} </td>
+            <td> {{task.target_time}} </td>
+            <td> {{task.status}}</td>
+            <td> 
+                <a class="edit" href="{% url 'update_task' task.id %}"> Edit Task </a>   
+            <a  class="delete" href="{% url 'delete_task' task.id %}"> Delete Task </a>
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

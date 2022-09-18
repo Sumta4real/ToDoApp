@@ -84,12 +84,16 @@
 }
 /* Style forms */
 .register, .login{
-    float: right;
+    /*float: right;*/
+    margin:auto;
     width: 50%;
-    height: 100%;
+    height: auto;
     background-color:rgb(229, 215, 197);
+    background-color: rgb(13,11,294);
 
 }
+
+
 
 /* Style input boxes within form*/
 input {
@@ -121,4 +125,46 @@ input {
 
 }
 
+/* Style the edit and delete button to green and red background respectively*/
+.edit  {
+    background-color: green;
+    color: white;
+    border: 1px solid greenyellow;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 3px;
+    padding: 3px;
+}
 
+.delete {
+    background-color: red;
+    color: white;
+    border: 1px solid rosybrown;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 5px;
+    padding: 3px;
+}
+
+.cancel {
+    color:blue;
+    text-decoration: none;
+}
+
+.message{
+    background-color: lightsalmon;
+    color: aliceblue;
+    width: 50%;
+    padding: 10px;
+    margin:10px;
+}
+
+table {
+    margin: 10px;
+    padding:auto;
+    
+}
+
+td {
+    border: 2px solid brown;
+}

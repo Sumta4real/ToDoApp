@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ToDoApp.settings")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,15 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-DJANGO_SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY","django-insecure-oovcx^3(9fe-v6r8fa^!62&0bh^rw&_q*j7pt1)hf3@dupa+-^")
-print(DJANGO_SECRET_KEY)
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get("DEBUG")) == "1" #'1' == True
+DEBUG = str(os.environ.get("DEBUG")) == "0" #'1' == True
 
 ALLOWED_HOSTS = []
 if not DEBUG:
-    ALLOWED_HOSTS += [f"{os.environ.get('DJANGO_ALLOWED_HOST')}"]
+    ALLOWED_HOSTS += [os.environ.get('DJANGO_ALLOWED_HOST')]
     print(ALLOWED_HOSTS)
 
 # Application definition
@@ -147,3 +148,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+

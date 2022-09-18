@@ -1,4 +1,7 @@
+
 {%extends "tasks/index.html"%}
+{% load static %}
+
 
 {% block title %}
 Register Page
@@ -12,7 +15,8 @@ Register Page
     <form action="" method="POST" class="center">
         {% csrf_token %}
        {{ form.as_p }}
-        <input type="submit", name="register", value="Register">
+       <button name="register"> Register </button> <br>
+        <!--<input type="submit", name="register", value="Register">-->
         <p> Already have an account? <a href="login"> Login </a></p>
     </form>
     

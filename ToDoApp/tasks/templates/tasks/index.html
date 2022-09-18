@@ -16,27 +16,30 @@
 <body>
     <div class="topnav">
         <a href="home">Home</a>
-        <a href="welcome">Welcome User</a>
-        <a href="task_view">Tasks</a>
+
+        {% if request.user.is_authenticated %}
+
+        
+        <a href="create_task">Create Task</a>
+        <a href="{% url 'tasks_list' %}"> All Tasks</a>
+
         <div class="topnav-right">
-            <a href="register">Register</a>
-            <a href="login">Login</a>
-            <a href="logout"> Logout</a>
+            <a> Welcome, {{request.user}} ! </a>
+            <a href="{% url 'logout' %}"> Logout</a>
         </div>
+
+        {% else %}
+
+        <div class="topnav-right">
+            
+            <a href="login"> Login </a>
+            <a href="register"> Register </a>
+        </div>
+        {% endif %}
+
     </div>
 
-    <div class="landingimg">
-        <div class="center">
-            <pre>
-            <h1> Hey Buddy!
-            WELCOME</h1>
-            </pre>
-
-            <h1> "Its not enough to be busy, so are the ants"</h1>
-
-            <h2> Get efficient with our Task Management App</h2>
-        </div>
-    </div>
+ 
 
     {% block body %}
     {% endblock %}

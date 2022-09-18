@@ -5,14 +5,15 @@ from multiprocessing import context
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from tasks.models import Task,User
-from .forms import TaskForm
+from .forms import SignupForm, TaskForm
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
     return render(request, 'tasks/home.html')
 
 def register(request):
-    form = UserCreationForm(request.POST or None)
+    form = SignupForm(request.POST or None)
     if form.is_valid():
         user_obj = form.save()
         return redirect('/tasks/login')
@@ -78,7 +79,7 @@ def logout_view(request):
     return render(request,'tasks/logout.html',{})
 
 @login_required
-def task_create_view(request):
+def create_task(request):
     form = TaskForm(request.POST or None)
     context = {'form':form}
     #What happens when the form is valid
@@ -87,8 +88,40 @@ def task_create_view(request):
         task_object = form.save(commit=False)  #don't commit the changes to the database yet
         task_object.user = request.user #link the current user to the user field in the TaskForm
         task_object.save() #commit all changes including the linked user field
+        messages.success(request,'Task Created Successfully')
         context['form'] = TaskForm() #initialise a new form
     return render(request,'tasks/task_create_view.html',context=context)
+
+
+def update_task(request,task_id):
+    current_task = Task.objects.get(id=task_id)
+    form = TaskForm(request.POST or None,instance=current_task )
+    context = {'form':form,'current_task':current_task}
+    if form.is_valid():
+        form.save()
+        messages.success(request,'Task Updated Successfully')
+        return redirect('tasks_list')
+        #context['form'] = TaskForm()
+
+    # form = TaskForm(instance=current_task)
+    # if request.method == 'POST':
+    #     form = TaskForm(request.POST,instance=current_task)
+    #     if form.is_valid():
+    #         #form.save()
+    #         #context['form'] = TaskForm()
+    #         return redirect('/')
+    # context = {'form':form}
+    return render(request,'tasks/task_create_view.html',context=context)
+
+def delete_task(request,task_id):
+    current_task = Task.objects.get(id=task_id)
+    # form = TaskForm(request.POST or None, instance= current_task)
+    if request.method == 'POST':
+        current_task.delete()
+        messages.success(request,'Task deleted successfully!')
+        return redirect('tasks_list')
+    context = {'task':current_task}
+    return render(request, 'tasks/delete.html', context=context)
 
 # @login_required
 # def task_create_view(request):
@@ -119,5 +152,17 @@ def welcome_user(request):#,user_id=None):
     list_all = [user.id,user.firstname,user.lastname,user.email]
     return render(request, 'tasks/welcome.html',{'username': username, 'details':list_all})#, context=context)
 
+@login_required
+def tasks_list(request):
+    #print(request.user) #print out the current user
+    current_user = request.user
+    #get all task object for the current user
+    tasks = Task.objects.filter(user = current_user)
+    #parse it as a context for the webpage
+    context = { 'tasks': tasks }
+    if request.method == 'GET':
+        task_list = Task.objects.filter()
+        return render(request, 'tasks/tasks_list.html',context=context)
 
     
+    #if request.method == 'POST':

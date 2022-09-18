@@ -10,6 +10,18 @@ Home Page
 -->
 
 {% block body %}
+<div class="landingimg">
+    <div class="center">
+        <pre>
+        <h1> Hey Buddy!
+        WELCOME</h1>
+        </pre>
+
+        <h1> "Its not enough to be busy, so are the ants"</h1>
+
+        <h2> Get efficient with our Task Management App</h2>
+    </div>
+</div>
 <div class="home">
    
     <pre>
@@ -18,11 +30,19 @@ Home Page
      and it's a failure,
     you will fail above everyone else"</p>
     </pre>
+    {% if request.user.is_authenticated %}
+    <div class="homecontent">
+        <h2> Welcome to the Abode of Efficient Planners </h2>
+            <p> How is the task execution coming on </p>
+            <p> Continue where you left off !!!</p>
+    </div>
+    {% else %}
     <div class="homecontent">
         <h2> Thanks for stopping by </h2>
             <p>Get your tasks done efficiently<a href="register"> Register Here</a></p>
             <p> Already have an account? <a href="login"> Login </a></p>
     </div>
+    {% endif %}
     <pre>
     <p class="bottomleft"> "If you are not willing to risk the usual, 
         you will have to settle for the ordinary"</p>

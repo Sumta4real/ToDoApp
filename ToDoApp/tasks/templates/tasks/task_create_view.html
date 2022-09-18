@@ -11,7 +11,11 @@ Task View
 <h2> Welcome Dear</h2>
 <form action="" method="POST"> {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="Add Tasks">
+    {% if current_task %}
+    <input type="submit" value="Update Task">
+    {% else %}
+    <input type="submit" value="Add Task">
+    {% endif %}
 </form>
 
 
