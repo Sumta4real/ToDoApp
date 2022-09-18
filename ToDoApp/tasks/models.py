@@ -1,6 +1,5 @@
 
 from secrets import choice
-from tkinter import CASCADE, Widget
 from django.db import models
 from django.conf import settings
 
